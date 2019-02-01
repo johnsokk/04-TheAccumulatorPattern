@@ -129,7 +129,7 @@ def run_test_draw_circles_from_rectangle():
     print('--------------------------------------------------')
 
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # DONE: 3. Implement this TEST function.
     #   It TESTS the  draw_circles_from_rectangle  function
     #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
@@ -141,6 +141,33 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ###########################################################################
     # -------------------------------------------------------------------------
+
+    # Test 1:
+    window1 = rg.RoseWindow(720, 500)
+    rectangle = rg.Rectangle(rg.Point(600, 400), rg.Point(500, 450))
+    rectangle.fill_color = 'green'
+    m = 4
+    n = 5
+    draw_circles_from_rectangle(m, n, rectangle, window1)
+    window1.close_on_mouse_click()
+
+    # Test 2:
+    window1 = rg.RoseWindow(720, 500)
+    rectangle = rg.Rectangle(rg.Point(400, 250), rg.Point(440, 325))
+    rectangle.fill_color = 'green'
+    m = 8
+    n = 3
+    draw_circles_from_rectangle(m, n, rectangle, window1)
+    window1.close_on_mouse_click()
+
+    # Test 1:
+    window2 = rg.RoseWindow(720, 500)
+    rectangle = rg.Rectangle(rg.Point(400, 250), rg.Point(440, 325))
+    rectangle.fill_color = 'green'
+    m = 4
+    n = 5
+    draw_circles_from_rectangle(m, n, rectangle, window1)
+    window1.close_on_mouse_click()
 
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
@@ -182,6 +209,23 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
       :type rectangle: rg.Rectangle
       :type window: rg.RoseWindow
     """
+    rectangle.outline_color = 'black'
+    rectangle.outline_thickness = 5
+    rectangle.attach_to(window)
+    for k in range(m):
+        circle = rg.Circle(rg.Point(rectangle.corner_1.x-(0.5+k)*rectangle.get_height(), rectangle.corner_2.y-0.5*rectangle.get_height()), 0.5*rectangle.get_height())
+        circle.fill_color = 'green'
+        circle.attach_to(window)
+    window.render()
+    for k in range(n):
+        circle = rg.Circle(rg.Point(rectangle.corner_2.y - (0.5 + k) * rectangle.get_width(),
+                                    rectangle.corner_1.x - 0.5 * rectangle.get_width()), 0.5 * rectangle.get_height())
+        circle.fill_color = 'green'
+        circle.attach_to(window)
+    window.render()
+
+
+
     # -------------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
     #          Tests have been written for you (above).
