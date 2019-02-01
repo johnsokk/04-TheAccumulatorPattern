@@ -31,6 +31,7 @@ def main():
     run_test_draw_lines()
 
 
+
 def run_test_draw_parallel_lines():
     """ Tests the   draw_parallel_lines  function. """
     print()
